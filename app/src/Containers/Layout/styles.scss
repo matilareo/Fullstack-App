@@ -1,0 +1,68 @@
+@import './variables.scss';
+
+@mixin cointainer-commons {
+    display: grid;
+    height: 100%;
+    background-size: cover;
+    grid-template-areas:
+        'title title title'
+        '. body .'
+        ' footer footer footer';
+    grid-template-rows: 90px 1fr 90px;
+    grid-template-columns: 3fr 15fr 3fr;
+}
+
+#root {
+    height: 100%;
+}
+.title-item {
+    grid-area: title;
+    justify-self: stretch;
+    text-align: center;
+    padding-top: 10px;
+    padding-top: 30px;
+}
+.body-item {
+    padding-top: 40px;
+    grid-area: body;
+    overflow: auto;
+}
+.footer {
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    grid-area: footer;
+}
+.footer-wrapper {
+    margin-top: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.footer-item-socialmedia {
+    padding-left: 10px;
+    width: 30%;
+    justify-self: flex-start;
+}
+.footer-item-copyright {
+    margin-top: 0px !important;
+    width: 30%;
+    text-align: right;
+}
+.footer-divider {
+    color: white;
+}
+
+@media screen and (min-width: $limitWidth) {
+    .container {
+        @include cointainer-commons();
+        background-image: url($desktopBackground);
+    }
+}
+
+@media screen and (max-width: $limitWidth) {
+    .container {
+        @include cointainer-commons();
+        background-image: url($mobileBackground);
+    }
+}
